@@ -4,10 +4,10 @@
       <p>ОРГАНИЗАЦИОННАЯ СТРУКТУРА</p>
     </div>
     <div class="addCity">
-      <button @click="addButton">+ Добавть</button>
+      <button @click="showModal">+ Добавть</button>
     </div>
-    <transition>
-      <Modal c-show="!show" />
+    <transition name="modal-fade">
+      <Modal v-show="STATE_SHOWMODAL" />
     </transition>
     <div class="title">
       <ul class="center__header">
@@ -24,29 +24,18 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import CityList from "./components/CityList.vue";
 import Modal from "./components/Modal.vue";
 export default {
-  name: "App",
   components: { CityList, Modal },
-  data() {
-    return {
-      show: true,
-    };
+  name: "App",
+  computed: {
+    ...mapGetters(["DROPSTATE", "STATE_SHOWMODAL"]),
   },
-
   methods: {
-    addButton() {
-      if (show = !show) return;
-      // try {
-      //   const payload = {
-
-      //     id:  this.$uuid.v1(),
-      //     child: [],
-      //   }
-      // } catch (error) {
-
-      // }
+    showModal() {
+      this.$store.dispatch("ACTION_VISIBILITIMODAL");
     },
   },
 };
@@ -79,5 +68,30 @@ export default {
   background-color: #045e5e;
   color: #ffffff;
   padding: 20px;
+}
+.modal {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+  transition: opacity 0.3s ease;
+}
+.modal_mask {
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal__container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  font-family: Helvetica, Arial, sans-serif;
 }
 </style>
