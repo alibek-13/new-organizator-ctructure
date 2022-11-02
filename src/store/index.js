@@ -22,9 +22,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    ACTION_VISIBILITIMODAL({commit}) {
+    ACTION_VISIBILITIMODAL({ commit }) {
       commit('VISIBILITI_MODAL')
-    },
+    }
 
   },
   getters: {

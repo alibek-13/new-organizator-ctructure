@@ -1,15 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
-
+import Statistics from '../pages/Statistics/Statistics.vue'
+import City from '../pages/City/CityList.vue'
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: City,
   },
+  {
+    path: "/about",
+    name: "about",
+    component: Statistics,
+  }
 
 ];
 
