@@ -33,6 +33,7 @@
 
 <script>
 import { mapMutations } from "vuex";
+import {today} from "../plugins/dateToday.js";
 export default {
   components: {},
   name: "modal",
@@ -45,20 +46,20 @@ export default {
     };
   },
   computed: {
- 
+   
   },
   methods: {
-   ...mapMutations(['ADD_CITIES']),
+    ...mapMutations(['ADD_CITIES']),
     addModalCyti() {
       this.ADD_CITIES({
-        created_at: Date.now(),
+        created_at: today.toDateString(),
         id: this.$uuid.v1(),
         title: this.title,
         total: this.total,
         fact: this.fact,
         subDivision:[],
-      }),
-      (this.title = ""), (this.total = ""), (this.fact = "");
+      })
+      // (this.title = ""), (this.total = ""), (this.fact = "");
     },
     close() {
       this.$store.dispatch("ACTION_VISIBILITIMODAL");

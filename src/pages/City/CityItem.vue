@@ -8,6 +8,7 @@
       <button type="button" v-if="!parentItem" @click="deleteCtructure">
         Удалить заголовок
       </button>
+      <div class="container">
       <div class="main__footer">
         <h3>{{ item.title2 }}</h3>
         <h3>{{ item.total2 }}</h3>
@@ -23,6 +24,7 @@
         <button type="button" v-if="parentItem" @click="deleteSubDivision">
           удалить подзаголовок
         </button>
+      </div>
 
         <ul
           class="list-none"
@@ -44,6 +46,8 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import {today} from "../../plugins/dateToday.js"
+
 export default {
   name: "CityItem",
   components: {},
@@ -90,7 +94,7 @@ export default {
 
       // })
       const task = {
-        created_at: Date.now(),
+        created_at: today.toDateString(),
         id: this.$uuid.v1(),
         title2: this.title2,
         fact2: this.fact2,
@@ -108,5 +112,12 @@ export default {
   width: 200px;
   display: flex;
   flex-direction: column;
+}
+.container{
+  display: flex;
+  margin-left: 50px;
+}
+.list-none{
+  display: flex;
 }
 </style>
