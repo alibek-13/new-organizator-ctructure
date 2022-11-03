@@ -3,23 +3,28 @@
         <input type="text" placeholder="неделя">
         <input type="text" placeholder="часы">
         <button @click="showDinamicsBitoc"> Показать </button>
+
+        {{ Bitoc }}
     </div>
 </template>
 
 <script>
-// import { mapActions } from 'vuex';
-// import {getBitcoin} from '../../plugins/axios.js'
-// import api from '../../plugins/axios.js'
+
 import axios from 'axios'
 
+
 export default {
+    data: ()=> ({
+        Bitoc: []
+    }),
     methods: {
         
         async showDinamicsBitoc() {
             try {
-                const res = await axios
-                .get('https://api.blockchain.info/charts/transactions-per-second')
-                .then(console.log(res))
+                await axios
+                .get('https://api.binance.com/api/v3/depth?symbol=BNBBTC&limit=5')
+                .then(res => this.Bitoc = console.log(res.data))
+                
                 
             } catch (e) {
                 console.error(e)
