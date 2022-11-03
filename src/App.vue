@@ -32,7 +32,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  background-color: #045e5e;
+  background-color: #219653;
   color: #ffffff;
   padding: 20px;
 }
@@ -47,7 +47,7 @@ export default {
 }
 
 .div {
-  background-color: #045e5e;
+  background-color: #219653;
   color: #ffffff;
   padding: 20px;
 }
